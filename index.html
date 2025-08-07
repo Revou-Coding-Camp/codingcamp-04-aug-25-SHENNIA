@@ -2,14 +2,15 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>To-Do List</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>To-Do List App</title>
   <link rel="stylesheet" href="css/style.css" />
 </head>
 <body>
   <div class="container">
     <h1>To-Do List</h1>
 
+    <!-- Form -->
     <form id="todo-form">
       <input type="text" id="task-input" placeholder="Enter task..." required />
       <input type="date" id="due-date" required />
@@ -21,30 +22,34 @@
       <button type="submit">Add Task</button>
     </form>
 
-    <div class="toolbar">
-      <input type="text" id="search" placeholder="Search task..." />
-      <select id="status-filter">
-        <option value="">All Status</option>
+    <!-- Search + Filter -->
+    <div class="controls">
+      <input type="text" id="search" placeholder="Search tasks..." />
+      <select id="filter-status">
+        <option value="All">All Status</option>
         <option value="Pending">Pending</option>
         <option value="In Progress">In Progress</option>
         <option value="Completed">Completed</option>
       </select>
-      <button id="delete-all">Delete All</button>
     </div>
 
-    <table>
+    <!-- Table -->
+    <table id="todo-table">
       <thead>
         <tr>
-          <th id="sort-task">Task</th>
-          <th id="sort-date">Due Date</th>
-          <th id="sort-status">Status</th>
+          <th class="sortable" data-sort="task">Task</th>
+          <th class="sortable" data-sort="dueDate">Due Date</th>
+          <th class="sortable" data-sort="status">Status</th>
           <th>Actions</th>
         </tr>
       </thead>
-      <tbody id="task-list">
-        <!-- Tasks will appear here -->
+      <tbody id="todo-body">
+        <tr><td colspan="4" class="no-task">No task found</td></tr>
       </tbody>
     </table>
+
+    <!-- Delete All -->
+    <button id="delete-all">Delete All Tasks</button>
   </div>
 
   <script src="js/script.js"></script>
